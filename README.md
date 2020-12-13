@@ -1,5 +1,5 @@
 # Face-Mask-Detector
-Face mask detector that uses open cv and tensorflow and a servo motr with an arduino.
+Face mask detector that uses open cv and tensorflow and a servo motor with an arduino.
 
 
 Got it from this course
