@@ -2,15 +2,6 @@ import cv2
 from tensorflow import keras
 from keras.preprocessing.image import load_img , img_to_array
 import numpy as np
-from pyfirmata import Arduino, util
-#import necessary modules and packages
-
-try:
-	board = Arduino('YOURPORT')#initalize the arduino with the port number
-	servo_pin = board.get_pin('d:PIN_SERVO_IS_CONNECTED_TO:s')#initialize the servo pin
-	servo_pin.write(0)#set the servo motor to 0 degreees
-except:
-	pass
 
 model = keras.models.load_model('main/model.h5')#load in the mask detector model
 
@@ -64,18 +55,10 @@ while True:
 		if prediction==1:
 			class_label = "No Mask"
 			color = (0,255,0)
-			try:
-				servo_pin.write(90)#change the servo position to 90 degrees
-			except:
-				pass
 		else:
 			class_label = "Mask"
 			color = (255,0,0)
-			#label stuff
-			try:
-				servo_pin.write(0)#change the servo position to 0 degrees
-			except:
-				pass
+
 		cv2.rectangle(color_img,(x,y),(x+w,y+h),(0,0,255),3)
 		cv2.putText(color_img, class_label, org, font ,fontScale, color, thickness,cv2.LINE_AA)
 		#draw the label around the face
