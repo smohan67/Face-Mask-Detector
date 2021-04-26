@@ -2,6 +2,7 @@ import cv2
 from tensorflow import keras
 from keras.preprocessing.image import load_img , img_to_array
 import numpy as np
+import create_model
 
 model = keras.models.load_model('main/model.h5')#load in the mask detector model
 
